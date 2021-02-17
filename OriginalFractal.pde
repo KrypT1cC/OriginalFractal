@@ -10,7 +10,7 @@ public void setup()
 public void draw()
 {
   background(0, 0, 0);
-  hexagon(500, 500, limit);
+  circleLoop(500, 500, limit);
 }
 
 public void mouseDragged()
@@ -25,18 +25,18 @@ public void mouseDragged()
   }
 }
 
-public void hexagon(int x, int y, int len)
+public void circleLoop(int x, int y, int len)
 {
   if (len <= 20)
   {
-    circle(x, y, len);
+    ellipse(x, y, len, len);
   }
   else // if r big == 1 then r small == 1 + root(2)
   {
-    circle(x, y, len);
-    hexagon(x, y - len * 6 / 8, len/2);
-    hexagon(x, y + len * 6 / 8, len/2);
-    hexagon(x - len * 6 / 8, y, len/2);
-    hexagon(x + len * 6 / 8, y, len/2);
+    ellipse(x, y, len, len);
+    circleLoop(x, y - len * 6 / 8, len/2);
+    circleLoop(x, y + len * 6 / 8, len/2);
+    circleLoop(x - len * 6 / 8, y, len/2);
+    circleLoop(x + len * 6 / 8, y, len/2);
   }
 }
